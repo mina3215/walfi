@@ -15,7 +15,7 @@ import CardItem from '../walletcomponents/walletcards/WalletCard';
 import GoFight from '../walletcomponents/GoFight';
 import {Background} from '../walletcomponents/CommonStyle';
 import ShinhanLogo from '../../../assets/wallet/ShinhanLogo.png';
-import Exchange from '../../../assets/wallet/Exchange.png'
+import Exchange from '../../../assets/wallet/Exchange.png';
 import { getAccounts, getExchangeRate } from '../walletSlice';
 import { ChangeMusic } from '../../home/homeSlice';
 import { SCREEN_HEIGHT, SCREEN_WIDTH } from "../walletcomponents/ScreenSize";
@@ -33,7 +33,7 @@ export default function WalletHome({navigation}) {
 
   useFocusEffect(
     React.useCallback(()=>{
-      getData()
+      getData();
     },[])
   )
 
@@ -58,6 +58,7 @@ export default function WalletHome({navigation}) {
   return (
     <>
     {cards&&
+
     <View style={Background.background}>
       <View style={{flexDirection:'row', height:SCREEN_HEIGHT*0.05}}>
         <TouchableOpacity onPress={()=>setType(true)}><Text style={{...styles.accountTxt, color:type?'black':'grey'}}>전체 계좌</Text></TouchableOpacity> 
@@ -71,12 +72,15 @@ export default function WalletHome({navigation}) {
           })}
         </ScrollView>
       </View>
+
+
       <View style={styles.buttons}>
         <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('MakeAccount')}>
           <Image source={SSAFY} style={{width:'20%', height:'35%', resizeMode:'contain'}}></Image>
           <Text style={styles.txtSize}>예적금 만들기</Text>
           <Text style={{marginLeft:'40%'}}>&gt;</Text>
-        </TouchableOpacity>  
+        </TouchableOpacity>
+         
         <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('ExchangeSearch')}>
           <Image source={Exchange} style={{width:'20%', height:'35%', resizeMode:'contain'}}></Image>
           <Text style={styles.txtSize}>오늘의 환율</Text>

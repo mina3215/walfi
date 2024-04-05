@@ -10,6 +10,7 @@ const ChangeForm = (state) => {
   }
 }
 
+
 //숫자 표기식에서 숫자로
 const RechangeForm = (state) => {
   if(typeof(state) !== 'string'){
