@@ -15,13 +15,13 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <>
-      <head>
-        <Header/>
-      </head>
+    <html lang="en">
       <body className={inter.className}>
+        <div>
+          <Header />
+        </div>
         <RecoilRootProvider>{children}</RecoilRootProvider>
       </body>
-    </>
+    </html>
   )
 }

@@ -1,9 +1,9 @@
-export default function WalfiLogo(){
-  return(
+export default function WalfiLogo() {
+  return (
     <div
       className={`items-center leading-none text-blue-500`}
     >
-      <p className="text-blue-00 text-[44px]">WALFI</p>
+      <p className="text-blue-500 text-[44px] font-bold">WALFI</p>
     </div>
   )
 }

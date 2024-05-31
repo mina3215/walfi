@@ -1,40 +1,44 @@
-import { 
+'use client'
+import {
   StarIcon,
   Cog6ToothIcon as SettingIcon,
   MagnifyingGlassIcon as SearchIcon
-}from '@heroicons/react/24/outline';
+} from '@heroicons/react/24/outline';
 
-export default function HeaderWarraper(){
-  return(
-    <div className='flex-row'>
-      <IconStar/>
-      <IconSetting/>
-      <IconSearch/>
+import { useBooleanState } from '@/hooks/useBooleanState';
+
+export default function IconsWrapper() {
+  return (
+    <div className='relative flex flex-row'>
+      <IconStar />
+      <IconSetting />
+      <IconSearch />
     </div>
   )
 }
 
-function IconStar(){
-  
-  return(
+function IconStar() {
+  const [isCheck, setCheck] = useBooleanState(false);
+
+  return (
     <>
-      <StarIcon className='px-[44]'/>
+      <StarIcon className='w-6 cursor-pointer' onClick={setCheck.toggle} />
     </>
   )
 }
 
-function IconSetting(){
-  return(
+function IconSetting() {
+  return (
     <>
-      <SettingIcon/>
+      <SettingIcon className='w-6 cursor-pointer' />
     </>
   )
 }
 
-function IconSearch(){
-  return(
+function IconSearch() {
+  return (
     <>
-      <SearchIcon/>
+      <SearchIcon className='w-6 cursor-pointer' />
     </>
   )
 }

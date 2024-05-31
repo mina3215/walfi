@@ -1,14 +1,14 @@
 import Link from "next/link";
 import WalfiLogo from "./walfi-logo";
-import HeaderWarraper from "./header-icons";
+import IconsWrapper from "./header-icons";
 
-export default function Header(){
-  return(
-    <>
+export default function Header() {
+  return (
+    <div className="flex justify-around">
       <Link href="/">
-        <WalfiLogo/>  
+        <WalfiLogo />
       </Link>
-      <HeaderWarraper/>
-    </>
+      <IconsWrapper />
+    </div>
   )
 }
