@@ -1,6 +1,7 @@
 'use client'
 import { useRef, useState } from "react";
 
+
 export function useBooleanState(initialValue: boolean):
   [boolean, { toggle: () => void; on: () => void; off: () => void }] {
   const [value, setValue] = useState(initialValue);
@@ -10,6 +11,7 @@ export function useBooleanState(initialValue: boolean):
     on: () => setValue(true),
     off: () => setValue(false)
   })
+
 
   return [value, updateValue.current];
 }

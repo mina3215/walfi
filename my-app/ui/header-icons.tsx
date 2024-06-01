@@ -6,18 +6,19 @@ import {
 } from '@heroicons/react/24/outline';
 
 import { useBooleanState } from '@/hooks/useBooleanState';
+import SearchBar from './searchbar';
 
 export default function IconsWrapper() {
   return (
     <div className='relative flex flex-row'>
-      <IconStar />
-      <IconSetting />
-      <IconSearch />
+      <Star />
+      <Setting />
+      <Search />
     </div>
   )
 }
 
-function IconStar() {
+function Star() {
   const [isCheck, setCheck] = useBooleanState(false);
 
   return (
@@ -27,7 +28,7 @@ function IconStar() {
   )
 }
 
-function IconSetting() {
+function Setting() {
   return (
     <>
       <SettingIcon className='w-6 cursor-pointer' />
@@ -35,10 +36,12 @@ function IconSetting() {
   )
 }
 
-function IconSearch() {
+function Search() {
+  const [isShow, setShow] = useBooleanState(false);
   return (
     <>
-      <SearchIcon className='w-6 cursor-pointer' />
+      <SearchIcon className='w-6 cursor-pointer' onClick={setShow.toggle} />
+      {isShow && <SearchBar placeholder='검색어를 입력하세요' />}
     </>
   )
 }
