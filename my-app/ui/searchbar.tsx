@@ -1,8 +1,13 @@
 'use client'
 
+import clsx from "clsx";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 
-export default function SearchBar({ placeholder }: { placeholder: string }) {
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  children?: React.ReactNode;
+}
+
+export default function SearchBar({ className, children, placeholder, ...rest }: InputProps) {
   const searchParams = useSearchParams();
   // const pathname = usePathname();
   // const { replace } = useRouter();
@@ -13,11 +18,13 @@ export default function SearchBar({ placeholder }: { placeholder: string }) {
 
   return (
     <div>
-      <label htmlFor="search" className="sr-only">
+      <label htmlFor='search' className='sr-only'>
         Search
       </label>
       <input
-        className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+        className={clsx(
+          'peer block pl-10 text-sm placeholder:text-gray-500',
+          className)}
         placeholder={placeholder}
         onChange={(e) => {
           handleSearch(e.target.value);
