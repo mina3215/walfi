@@ -1,6 +1,7 @@
 'use client';
 
 import style from '@/ui/login/login.module.css'
+import Link from 'next/link';
 
 export default function LoginForm() {
   return (
@@ -10,9 +11,7 @@ export default function LoginForm() {
           <div className='pb-2'>
             <input 
               className={style.inputBox}
-              id='id'
               type='id'
-              name='id'
               placeholder='아이디'
               required
             />
@@ -20,9 +19,7 @@ export default function LoginForm() {
           <div className='pt-2'>
             <input 
               className={style.inputBox}
-              id='password'
               type='password'
-              name='password'
               placeholder='비밀번호'
               required
             />
@@ -36,10 +33,10 @@ export default function LoginForm() {
         </div>
       </div>
       <div className='flex justify-end py-4'>
-        <button 
-          type='button'
+        <Link
+          href='/signup'
           className='border border-gray-300 py-1 px-4 text-gray-400 text-[12px]'
-        >회원가입</button>
+        >회원가입</Link>
       </div>
     </form>
   )
