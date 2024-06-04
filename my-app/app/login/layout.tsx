@@ -4,10 +4,16 @@ import React from 'react';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <main>
-      <LoginTab/>
-      <div>{children}</div>
-      <LoginNotice/>
+    <main className='flex flex-col h-screen'>
+      <LoginTab />
+      <div className='flex-1'>
+        <div className='h-40'>
+          <div>
+            {children}
+          </div>
+        </div>
+      </div>
+      <LoginNotice />
     </main>
   )
 }
