@@ -28,7 +28,7 @@ export default function LoginForm() {
         <div className='pl-3'>
           <button 
             type='button'
-            className='border-2 border-blue-500 bg-blue-500 text-white px-10 py-10'
+            className={`${style.btn} border-2 px-10 py-10`}
           >로그인</button>
         </div>
       </div>

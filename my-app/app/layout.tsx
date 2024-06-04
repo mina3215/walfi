@@ -1,7 +1,7 @@
 import '@/app/globals.css';
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import RecoilRootProvider from '../utils/recoilRootProvider'
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import RecoilRootProvider from '../utils/recoilRootProvider';
 
 const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     template: '%s | WALFI',
     default: 'WALFI',
   },
+  description: "",
 }
 export default function RootLayout({
   children,
