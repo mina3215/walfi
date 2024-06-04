@@ -11,17 +11,16 @@ export default function SearchBar({ className, children, placeholder, ...rest }:
   const searchParams = useSearchParams();
   // const pathname = usePathname();
   // const { replace } = useRouter();
+  console.log(className)
 
   function handleSearch(term: string) {
     console.log(term);
   }
 
   return (
-    <div>
-      <label htmlFor='search' className='sr-only'>
-        Search
-      </label>
+    <>
       <input
+        name='searchbar'
         className={clsx(
           'peer block pl-10 text-sm placeholder:text-gray-500',
           className)}
@@ -30,7 +29,9 @@ export default function SearchBar({ className, children, placeholder, ...rest }:
           handleSearch(e.target.value);
         }}
         defaultValue={searchParams.get('query')?.toString()}
+        autoFocus
       />
-    </div>
+      {children && children}
+    </>
   )
 }
