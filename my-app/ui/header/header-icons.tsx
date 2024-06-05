@@ -12,11 +12,13 @@ import clsx from 'clsx';
 
 export default function IconsWrapper() {
   return (
-    <div className='flex justify-around w-32 h-14'>
-      <Star />
-      <Setting />
-      <Search />
-    </div>
+    <>
+      <div className='static flex justify-around w-32 h-14'>
+        <Star />
+        <Setting />
+        <Search />
+      </div>
+    </>
   )
 }
 

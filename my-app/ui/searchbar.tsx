@@ -11,7 +11,6 @@ export default function SearchBar({ className, children, placeholder, ...rest }:
   const searchParams = useSearchParams();
   // const pathname = usePathname();
   // const { replace } = useRouter();
-  console.log(className)
 
   function handleSearch(term: string) {
     console.log(term);

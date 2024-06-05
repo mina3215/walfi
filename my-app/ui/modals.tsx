@@ -14,7 +14,7 @@ function Modal(props: {
 
 export function ModalSearch() {
   return (
-    <div className='absolute bg-white flex justify-center items-center top-16 left-0 right-0 border h-52'>
+    <div className='absolute bg-white flex justify-center items-center top-12 right-0 left-0 border h-52 w-full '>
       <SearchBar className='border-2 border-black py-[3px] w-[400px] h-11 bg-slate-50' placeholder='검색어를 입력하세요' />
     </div>
   )

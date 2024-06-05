@@ -1,14 +1,21 @@
 import Link from 'next/link';
 import WalfiLogo from '../walfi-logo';
 import IconsWrapper from './header-icons';
+import HeaderNav from '../headernav';
 
 export default function Header() {
   return (
-    <div className='relative flex justify-around py-4'>
-      <Link href='/'>
-        <WalfiLogo />
-      </Link>
-      <IconsWrapper />
-    </div>
+    <>
+      <div className='relative flex justify-between w-[1280px] mx-auto'>
+        <Link href='/'>
+          <WalfiLogo />
+        </Link>
+        <IconsWrapper />
+      </div>
+      <div>
+        <HeaderNav />
+      </div>
+    </>
+
   )
 }
