@@ -6,17 +6,22 @@ import { usePathname } from 'next/navigation';
 import { Bars3Icon } from '@heroicons/react/24/outline';
 import { useBooleanState } from '@/hooks/useBooleanState';
 import { DropMenu } from './accordian';
+import { MenuProps } from '@/types/menu-list';
+import { useEffect, useRef, useState } from 'react';
 
-const links = [
+const links: MenuProps[] = [
   {
     name: '조회', href: '/check',
     list: [
-      { name: '계좌 조회', href: '/', list: ['통장 조회', '외화 통장 조회'] },
+      {
+        name: '계좌 조회', href: '/', list: [
+          '통장 조회', '외화 통장 조회']
+      },
       { name: '거래 내역 조회', href: '/', list: [] }
     ]
   },
   {
-    name: '이체', href: '/transfer',
+    name: '이체', href: '/account-transfer',
     list: [
       { name: '계좌 이체', href: '/', list: [] },
       { name: '예약 송금', href: '/', list: [] }
@@ -30,7 +35,7 @@ const links = [
     ]
   },
   {
-    name: '금융 상품', href: '/financial-items',
+    name: '금융상품', href: '/financial-items',
     list: [
       { name: '상품 가입', href: '/', list: [] },
     ]
@@ -50,25 +55,34 @@ export function HeaderNavLink() {
   const pathname = usePathname();
 
   const [isOpen, setOpen] = useBooleanState(false);
+  const overIdx = useRef(0);
+
+  const isOver = (idx: number) => {
+    overIdx.current = idx;
+    setOpen.off();
+    setOpen.on();
+  }
 
   return (
-    <div className='flex w-[1280px] mx-auto justify-center items-center font-bold'>
-      {links.map((link) => {
+    <div className='flex w-[1280px] mx-auto justify-around items-center font-bold' >
+      {links.map((link, idx) => {
         return (
-          <div>
+          <div className='flex justify-center w-[100px] h-[40px]' onMouseLeave={setOpen.off} onMouseOver={() => isOver(idx)}>
             <Link
-              key={link.name}
+              key={idx}
               href={link.href}
               className={clsx(
-                'flex w-[100px] mx-10 p-2 justify-center items-center',
+                'flex w-[100px] p-2 mx-auto justify-center items-center',
                 {
-                  'bg-sky-100 text-blue-600': pathname === link.href,
+                  'absolute text-center align-middle bg-blue-750 text-white h-[50px] w-[80px] z-10 top-[70px]': isOpen && idx == overIdx.current
                 },
               )}
             >
-              <p className="hidden md:block select-none" onMouseOver={setOpen.toggle}>{link.name}</p>
+              <p className='hidden md:block select-none'>{link.name}</p>
             </Link>
-            <DropMenu MenuList={link.list} />
+
+            {/* {isOpen && idx == overIdx.current &&
+              <DropMenu sublinks={link.list} />} */}
           </div>
         )
       })}
