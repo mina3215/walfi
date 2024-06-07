@@ -9,3 +9,13 @@
 .btn {
   @apply  border-blue-500 bg-blue-500 text-white;
 }
+
+/* SideBar */
+
+.category {
+  @apply border border-gray-300 py-3 px-5 w-[220px];
+}
+
+.title {
+  @apply text-gray-500 text-lg font-semibold;
+}

@@ -2,7 +2,7 @@ import SmartLoginForm from '@/ui/login/smart-login/smart-login-form';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Login',
+  title: '로그인',
 }
 
 export default function LoginPage() {
@@ -10,5 +10,5 @@ export default function LoginPage() {
     <div>
       <SmartLoginForm />
     </div>
-  )
+  );
 }

@@ -61,5 +61,5 @@ export default function SignUpForm() {
         >확인</button>
       </div> 
     </form>
-  )
+  );
 }

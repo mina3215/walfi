@@ -6,8 +6,8 @@ import { useState } from 'react';
 
 export default function LoginTab() {
   const [isActive, setIsActive] = useState(false);
-  const loginStyle = isActive ? style.inactiveTab : style.activeTab;
-  const smartLoginStyle = isActive ? style.activeTab : style.inactiveTab;
+  const loginStyle = isActive ? style.inactive : style.active;
+  const smartLoginStyle = isActive ? style.active : style.inactive;
 
   return (
     <div className='flex items-center justify-center pt-10 pb-16'>

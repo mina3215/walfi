@@ -1,0 +1,35 @@
+'use client';
+
+import style from '@/ui/global.module.css';
+import SideNavLink from '@/ui/sidenav-link';
+
+interface Link {
+  name: string;
+  href: string;
+}
+
+interface SideNavProps {
+  title: string;
+  links: Link[];
+}
+
+export default function SideNav({ title, links }: SideNavProps) {
+  return (
+    <div className='py-20'>
+      <div className='pb-2'>
+        <div className={style.category}>
+          <div className={style.title}>
+            {title}
+          </div>
+        </div>
+      </div>
+      <div className='pt-2'>
+        <div className={style.category}>
+          {links.map((link) => (
+            <SideNavLink key={link.name} link={link} />
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}

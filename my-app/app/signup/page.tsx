@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import style from '@/ui/global.module.css';
 
 export const metadata: Metadata = {
-  title: 'Sign Up',
+  title: '회원가입',
 }
 
 export default function SignUpPage() {
@@ -11,5 +11,5 @@ export default function SignUpPage() {
     <div className={style.container}>
       <SignUpForm />
     </div>
-  )
+  );
 }

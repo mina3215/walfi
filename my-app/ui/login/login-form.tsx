@@ -41,5 +41,5 @@ export default function LoginForm() {
         </div>
       </div>
     </form>
-  )
+  );
 }
