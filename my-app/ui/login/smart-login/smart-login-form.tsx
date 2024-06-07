@@ -1,6 +1,6 @@
 'use client';
 
-import style from '@/ui/login/login.module.css';
+import style from '@/ui/global.module.css';
 
 function LockClosed() {
   return (

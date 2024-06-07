@@ -1,6 +1,7 @@
 'use client';
 
-import style from '@/ui/signup/signup.module.css';
+import style from '@/ui/global.module.css';
+import signup from '@/ui/signup/signup.module.css';
 import Link from 'next/link';
 
 export default function SignUpForm() {
@@ -10,7 +11,7 @@ export default function SignUpForm() {
         <div className='py-10'>
           <div className='flex items-center py-2'>
             <input 
-              className={`${style.inputBox} pr-24 mx-2`}
+              className={`${signup.inputBox} pr-24 mx-2`}
               type='id'
               placeholder='아이디'
               required
@@ -22,13 +23,13 @@ export default function SignUpForm() {
           </div>
           <div className='py-2'>
             <input 
-              className={`${style.inputBox} pr-4 mx-2`}
+              className={`${signup.inputBox} pr-4 mx-2`}
               type='password'
               placeholder='비밀번호'
               required
             />
             <input 
-              className={`${style.inputBox} pr-4 mx-2`}
+              className={`${signup.inputBox} pr-4 mx-2`}
               type='password'
               placeholder='비밀번호 확인'
               required
@@ -36,13 +37,13 @@ export default function SignUpForm() {
           </div>
           <div className='py-2'>
             <input 
-              className={`${style.inputBox} pr-4 mx-2`}
+              className={`${signup.inputBox} pr-4 mx-2`}
               type='text'
               placeholder='이름'
               required
             />
             <input 
-              className={`${style.inputBox} pr-24 mx-2 text-gray-500`}
+              className={`${signup.inputBox} pr-24 mx-2 text-gray-400`}
               type='date'
               required
             />      
