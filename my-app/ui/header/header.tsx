@@ -2,6 +2,7 @@ import Link from 'next/link';
 import WalfiLogo from '../walfi-logo';
 import IconsWrapper from './header-icons';
 import HeaderNav from '../headernav';
+import SolidStar from '../../public/solidstar.svg';
 
 export default function Header() {
   return (
@@ -12,7 +13,7 @@ export default function Header() {
         </Link>
         <IconsWrapper />
       </div>
-      <div>
+      <div className='border-y'>
         <HeaderNav />
       </div>
     </>

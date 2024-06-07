@@ -9,6 +9,7 @@ import {
 import { useBooleanState } from '@/hooks/useBooleanState';
 import { ModalSearch } from '../modals';
 import clsx from 'clsx';
+import Image from 'next/image';
 
 export default function IconsWrapper() {
   return (
@@ -27,7 +28,7 @@ function Star() {
 
   return (
     <div className='content-center w-9'>
-      <StarIcon className='w-8 cursor-pointer' onClick={setCheck.toggle} />
+      <StarIcon className={clsx('w-8 cursor-pointer', isCheck && 'fill-yellow-200')} onClick={setCheck.toggle} />
     </div>
   )
 }
