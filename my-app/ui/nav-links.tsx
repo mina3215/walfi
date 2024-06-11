@@ -78,10 +78,10 @@ export function HeaderNavLink() {
   const pathname = usePathname();
 
   const [isOpen, setOpen] = useBooleanState(false);
-  const overIdx = useRef(0);
+  const [index, setIdx] = useState(0);
 
   const isOver = (idx: number) => {
-    overIdx.current = idx;
+    setIdx(idx);
     setOpen.off();
     setOpen.on();
   }
@@ -97,15 +97,16 @@ export function HeaderNavLink() {
               className={clsx(
                 'flex w-[100px] p-2 mx-auto justify-center items-center',
                 {
-                  'absolute text-center align-middle bg-blue-750 text-white h-[50px] w-[80px] z-10 top-[70px]': isOpen && idx == overIdx.current
+                  'absolute text-center align-middle bg-blue-750 text-white h-[50px] w-[80px] z-10 top-[70px]': isOpen && idx == index
                 },
               )}
             >
               <p key={idx} className='hidden md:block select-none'>{link.name}</p>
             </Link>
 
-            {isOpen && idx == overIdx.current && link.list &&
-              <DropMenu sublinks={link.list} />}
+            {isOpen && idx == index && link.list &&
+              <DropMenu sublinks={link.list} />
+            }
           </div>
         )
       })}
