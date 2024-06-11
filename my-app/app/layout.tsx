@@ -1,13 +1,15 @@
 import './globals.css'
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import RecoilRootProvider from '../utils/recoilRootProvider'
+import { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import Header from '@/ui/header/header'
+import RecoilRootProvider from '../utils/recoilRootProvider';
+// import HeaderNav from '@/ui/headernav';
 
-const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
-  title: 'Graphy',
-  description: 'Project Share platform',
+  title: 'WALFI',
+  description: "WALFI's web version",
 }
+
 export default function RootLayout({
   children,
 }: {
@@ -15,7 +17,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
+        <div>
+          <Header />
+        </div>
         <RecoilRootProvider>{children}</RecoilRootProvider>
       </body>
     </html>
