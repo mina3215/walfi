@@ -18,7 +18,7 @@ export default function SideNav({ title, links }: SideNavProps) {
     <div className='py-20'>
       <div className='pb-2'>
         <div className={style.category}>
-          <div className={style.title}>
+          <div className='text-gray-500 text-lg font-semibold'>
             {title}
           </div>
         </div>

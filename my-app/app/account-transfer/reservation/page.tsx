@@ -2,14 +2,14 @@ import type { Metadata } from 'next';
 import style from '@/ui/global.module.css';
 
 export const metadata: Metadata = {
-  title: '금융 상품 조회',
+  title: '예약이체',
 }
 
-export default function FinancialItemsPage() {
+export default function ReservationPage() {
   return (
     <div>
       <div className={style.title}>
-        금융 상품 조회
+        예약이체
       </div>
     </div>
   );
