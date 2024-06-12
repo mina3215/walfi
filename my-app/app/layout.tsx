@@ -1,24 +1,28 @@
-import '@/app/globals.css';
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import './globals.css'
+import { Metadata } from 'next';
+import Header from '@/ui/header/header'
 import RecoilRootProvider from '../utils/recoilRootProvider';
+// import HeaderNav from '@/ui/headernav';
 
-const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: {
     template: '%s | WALFI',
     default: 'WALFI',
   },
-  description: "",
+  description: "WALFI's web version",
 }
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <html lang='en'>
-      <body className={inter.className}>
+    <html lang="en">
+      <body>
+        <div>
+          <Header />
+        </div>
         <RecoilRootProvider>{children}</RecoilRootProvider>
       </body>
     </html>

@@ -1,0 +1,8 @@
+{
+  "name": "walfi",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/mina3215/walfi.git",
+  "author": "박민아 <icherom@naver.com>",
+  "license": "MIT"
+}
