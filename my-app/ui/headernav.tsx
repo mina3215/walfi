@@ -1,4 +1,4 @@
-import { HeaderNavLink } from './nav-links'
+import HeaderNavLink from './nav-links'
 
 export default function HeaderNav() {
   return (
