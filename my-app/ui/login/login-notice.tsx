@@ -1,6 +1,6 @@
 export default function LoginNotice() {
   return (
-    <div className='flex items-center justify-center py-24 px-10'>
+    <div className='flex items-center justify-center py-16 px-10'>
       <div className='border-t border-gray-300 py-10'>
         <div className='items-center px-10 py-7 border border-gray-300'>
           <div className='py-2 font-extrabold text-[20px]'>

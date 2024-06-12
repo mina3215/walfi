@@ -31,8 +31,8 @@ const links: MenuProps[] = [
   {
     name: '이체', href: '/account-transfer',
     list: [
-      { name: '계좌 이체', href: '/', list: [] },
-      { name: '예약 송금', href: '/', list: [] }
+      { name: '계좌 이체', href: '/account-transfer', list: [] },
+      { name: '예약 이체', href: '/account-transfer/reservation', list: [] }
     ]
   },
   /**
@@ -56,7 +56,7 @@ const links: MenuProps[] = [
   {
     name: '금융상품', href: '/financial-items',
     list: [
-      { name: '상품 가입', href: '/', list: [] },
+      { name: '금융상품 조회', href: '/financial-items', list: [] },
     ]
   },
   /**

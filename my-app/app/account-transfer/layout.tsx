@@ -4,8 +4,8 @@ import SideNav from '@/ui/sidenav';
 
 const title = '이체'
 const links = [
-  { name: '즉시이체', href: '/account-transfer' },
-  { name: '예약이체', href: '/account-transfer/reservation'}
+  { name: '계좌 이체', href: '/account-transfer' },
+  { name: '예약 이체', href: '/account-transfer/reservation'}
 ];
 
 export default function Layout({ children }: { children: React.ReactNode }) {

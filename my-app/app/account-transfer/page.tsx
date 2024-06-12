@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import style from '@/ui/global.module.css';
 
 export const metadata: Metadata = {
-  title: '즉시이체',
+  title: '계좌 이체',
 }
 
 export default function AccountTransferPage() {
