@@ -2,12 +2,11 @@
 
 import clsx from 'clsx';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { useState } from 'react';
 import { Bars3Icon } from '@heroicons/react/24/outline';
 import { useBooleanState } from '@/hooks/useBooleanState';
-import { DropMenu } from './accordian';
 import { MenuProps } from '@/types/menuprops';
-import { useEffect, useRef, useState } from 'react';
+import DropMenu from './accordian';
 
 const links: MenuProps[] = [
   /**
@@ -74,9 +73,7 @@ const links: MenuProps[] = [
 
 
 
-export function HeaderNavLink() {
-  const pathname = usePathname();
-
+export default function HeaderNavLink() {
   const [isOpen, setOpen] = useBooleanState(false);
   const [index, setIdx] = useState(0);
 
@@ -88,28 +85,26 @@ export function HeaderNavLink() {
 
   return (
     <div className='flex w-[1280px] mx-auto justify-around items-center font-bold' >
-      {links.map((link, idx) => {
-        return (
-          <div className='flex justify-center w-[100px] h-[40px]' onMouseLeave={setOpen.off} onMouseOver={() => isOver(idx)}>
+      {links.map((link, idx) => 
+          <div key={link.name} className='flex justify-center w-[100px] h-[40px]' onMouseLeave={setOpen.off} onMouseOver={() => isOver(idx)} onFocus={()=>0}>
             <Link
               key={link.name}
               href={link.href}
               className={clsx(
                 'flex w-[100px] p-2 mx-auto justify-center items-center',
                 {
-                  'absolute text-center align-middle bg-blue-750 text-white h-[50px] w-[80px] z-10 top-[70px]': isOpen && idx == index
+                  'absolute text-center align-middle bg-blue-750 text-white h-[50px] w-[80px] z-10 top-[70px]': isOpen && idx === index
                 },
               )}
             >
-              <p key={idx} className='hidden md:block select-none'>{link.name}</p>
+              <p>{link.name}</p>
             </Link>
 
-            {isOpen && idx == index && link.list &&
+            {isOpen && idx === index && link.list &&
               <DropMenu sublinks={link.list} />
             }
-          </div>
-        )
-      })}
+        </div>
+      )}
       <Bars3Icon className='size-8 w-[100px] cursor-pointer' />
     </div>
   )

@@ -1,13 +1,13 @@
 'use client'
 
 import clsx from "clsx";
-import { useSearchParams, usePathname, useRouter } from "next/navigation";
+import { useSearchParams} from "next/navigation";
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   children?: React.ReactNode;
 }
 
-export default function SearchBar({ className, children, placeholder, ...rest }: InputProps) {
+export default function SearchBar({ className, children, placeholder}: InputProps) {
   const searchParams = useSearchParams();
   // const pathname = usePathname();
   // const { replace } = useRouter();
@@ -28,7 +28,6 @@ export default function SearchBar({ className, children, placeholder, ...rest }:
           handleSearch(e.target.value);
         }}
         defaultValue={searchParams.get('query')?.toString()}
-        autoFocus
       />
       {children && children}
     </>
