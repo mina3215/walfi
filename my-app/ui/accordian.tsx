@@ -25,7 +25,7 @@ function SubMenu({ sublinks }: MyComponentProps) {
 
 export default function DropMenu({ sublinks }: MyComponentProps) {
   return (
-    <div className='absolute border left-0 w-screen top-[96px]'>
+    <div className='absolute border left-0 w-screen top-[96px] bg-white'>
       <div className='w-[1080px] mx-auto flex flex-row'>
         {
           sublinks.map(link => 
