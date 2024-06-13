@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import style from '@/ui/global.module.css';
+import TransferNotice from '@/ui/account-transfer/transfer-notice';
 
 export const metadata: Metadata = {
   title: '즉시이체',
@@ -11,6 +12,7 @@ export default function AccountTransferPage() {
       <div className={style.title}>
         즉시이체
       </div>
+      <TransferNotice />
     </div>
   );
 }
