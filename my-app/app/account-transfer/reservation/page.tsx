@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import style from '@/ui/global.module.css';
 
 export const metadata: Metadata = {
-  title: '예약이체',
+  title: '예약 이체',
 }
 
 export default function ReservationPage() {
