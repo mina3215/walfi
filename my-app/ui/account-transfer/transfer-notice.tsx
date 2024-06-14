@@ -8,23 +8,28 @@ function InformationCircle() {
 
 export default function TransferNotice() {
   return(
-    <div className='flex items-center justify-center py-24 px-16'>
-      <div className='items-center px-10 py-7 border border-gray-300 bg-gray-50'>
+    <div className='flex items-center justify-center py-24 pl-10'>
+      <div className='items-center px-5 py-5 border border-gray-300 bg-gray-50'>
         <div className='flex items-center pb-2'>
           <InformationCircle />
-          <div className='font-semibold text-gray-600 text-[16px] pl-5'>
+          <div className='font-semibold text-[16px] pl-2'>
             이용안내
           </div>
         </div>
-        <div className='px-[70px]'>
-          <div className='text-[15px]'>
+        <div className='pl-14'>
+          <div className='text-[15px] font-semibold text-gray-600'>
             서비스 이용시간
           </div>
-          <div className='text-[13px]'>
-            - 평일 00:15~24:00, 토요일 00:15~24:00, 일요일/공휴일 00:15~24:00
+          <div className='text-[12px] pt-1'>
+            - 평일 00:15~24:00, <span className='text-blue-500'>토요일 00:15~24:00</span>, <span className='text-red-500'>일요일/공휴일 00:15~24:00</span>
+          </div>
+          <div className='text-[12px] pt-1'>
+            - <span className='text-red-500'>타행이체가능시간: 00:15 ~ 23:55</span>
+          </div>
+          <div className='text-[12px] pt-1'>
+            - 서비스 이용시간 예외 적용: CMS 00:30 ~ 23:50, 가상계좌 00:30 ~ 23:30, 국세/지방세입/국고금 00:30 ~ 23:10
           </div>
         </div>
-
       </div>
     </div>
   )
