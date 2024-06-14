@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { LoginedPhrase } from '@/ui/home/phrase';
 import AccountBox from '@/ui/home/account-box';
 import AccountList from '@/ui/home/account-list';
+import RecommandCard from '@/ui/card';
 
 export const metadata: Metadata = {
   title: 'WALFI',
@@ -17,6 +18,10 @@ export default function LoginedPage() {
         <div id='main-account-service' className='flex'>
           <AccountBox />
           <AccountList />
+        </div>
+        <div id='recommand-product'>
+          <p>박민아 고객님께 추천하는 상품입니다.</p>
+          <RecommandCard/>
         </div>
       </div>
     </main>
