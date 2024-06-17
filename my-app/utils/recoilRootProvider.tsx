@@ -1,7 +1,7 @@
 'use client'
 
 import { RecoilRoot } from 'recoil';
-// import Providers from '@/utils/provider';
+import Providers from '@/utils/provider';
 
 export default function RecoilRootProvider({
   children,
@@ -9,7 +9,7 @@ export default function RecoilRootProvider({
   children: React.ReactNode
 }) {
   return <RecoilRoot>
-    {children}
-    {/* <Providers>{children}</Providers> */}
+    {/* {children} */}
+    <Providers>{children}</Providers>
   </RecoilRoot>
 }
