@@ -35,8 +35,8 @@ export default function DropMenu({ sublinks }: MyComponentProps) {
                 href={link.href}
               >
                 <p className='hover:text-orange-700 hover:underline'>{link.name}</p>
-                {link.list && <SubMenu sublinks={link.list} />}
               </Link>
+                {link.list && <SubMenu sublinks={link.list} />}
             </div>
           )
         }
