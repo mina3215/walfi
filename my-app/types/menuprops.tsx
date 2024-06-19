@@ -24,3 +24,14 @@ export interface SideNavProps {
   title: string;
   links: Link[];
 }
+
+// transfer header
+
+export interface TransferHeaderProps {
+  number: string;
+  title: string;
+}
+
+export interface IndexStyleProps {
+  activeIndex: string;
+}

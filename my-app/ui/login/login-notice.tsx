@@ -11,8 +11,10 @@ export default function LoginNotice() {
           </div>
           <div className='pl-7 text-[12px]'>
             최근 금융기관 콜센터(WALFI 고객행복센터 1234-1234 등) 번호를 도용하여 개인정보유출 등 사유로 가짜사이트 접속을 유도하는 SMS가 발견되고 있습니다.
+          </div>
+          <div className='pl-7 text-[12px]'>
             또한 PC에 악성코드가 설치될 경우 즐겨찾기 또는 정상 은행사이트를 입력하셔도 가짜 은행사이트에 연결될 수 있습니다.
-            </div>
+          </div>
         </div>
       </div>
     </div>
