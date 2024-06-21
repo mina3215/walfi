@@ -7,7 +7,7 @@
 }
 
 .btn {
-  @apply  border-blue-500 bg-blue-500 text-white;
+  @apply border border-blue-500 bg-blue-500 text-white;
 }
 
 .title {

@@ -39,3 +39,9 @@
 .forminput {
   @apply border border-gray-400 rounded-sm bg-green-200 py-1 px-2 text-[12px];
 }
+
+/* Information Check */
+
+.semititle {
+  @apply text-[18px] text-blue-500 font-light;
+}

@@ -3,6 +3,9 @@ import style from '@/ui/global.module.css';
 import TransferNotice from '@/ui/account-transfer/page01/transfer-notice';
 import TransferForm from '@/ui/account-transfer/page01/transfer-form';
 import TransferHeader from '@/ui/account-transfer/transfer-header';
+import WithdrawalInfo from '@/ui/account-transfer/page02/withdrawal-info';
+import DepositInfo from '@/ui/account-transfer/page02/deposit-info';
+import TransferBtn from '@/ui/account-transfer/page02/transfer-btn';
 
 export const metadata: Metadata = {
   title: '계좌 이체',
@@ -28,6 +31,9 @@ export function Page02() {
   return(
     <div>
       <TransferHeader number={number} title={title} />
+      <WithdrawalInfo />
+      <DepositInfo />
+      <TransferBtn />
     </div>
   )
 }
