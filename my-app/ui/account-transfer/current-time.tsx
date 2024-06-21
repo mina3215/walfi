@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 
 function Clock() {
@@ -27,7 +29,7 @@ export default function CurrentTime() {
   }, []);
 
   return(
-    <div className='flex items-center justify-end pb-2'>
+    <div className='flex items-center justify-end'>
       <Clock />
       <div className='text-gray-500 text-[12px] pl-1'>
         현재: {currentTime}

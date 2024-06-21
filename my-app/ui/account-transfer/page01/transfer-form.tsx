@@ -2,7 +2,7 @@
 
 import global from '@/ui/global.module.css';
 import style from '@/ui/account-transfer/transfer.module.css';
-import CurrentTime from '@/ui/account-transfer/page01/current-time';
+import CurrentTime from '@/ui/account-transfer/current-time';
 
 export function InformationCircle() {
   return (
@@ -16,7 +16,7 @@ export default function TransferForm() {
   return (
     <div className='py-5 pl-10'>
       <CurrentTime />
-      <form>
+      <form className='pt-3'>
         <table className='w-full'>
           <tbody>
             <tr className='border-t border-gray-500'>
