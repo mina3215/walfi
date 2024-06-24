@@ -1,4 +1,5 @@
-'use client'
+'use client';
+
 import {
   StarIcon,
   XMarkIcon,
@@ -7,21 +8,9 @@ import {
 } from '@heroicons/react/24/outline';
 
 import { useBooleanState } from '@/hooks/useBooleanState';
-import { ModalSearch } from '../modals';
 import clsx from 'clsx';
-import Image from 'next/image';
+import ModalSearch from '../modals';
 
-export default function IconsWrapper() {
-  return (
-    <>
-      <div className='static flex justify-around w-32 h-14'>
-        <Star />
-        <Setting />
-        <Search />
-      </div>
-    </>
-  )
-}
 
 function Star() {
   const [isCheck, setCheck] = useBooleanState(false);
@@ -53,6 +42,18 @@ function Search() {
         }
       </div>
       {isShow && <ModalSearch />}
+    </div>
+  )
+}
+
+export default function IconsWrapper() {
+  return (
+    <div>
+      <div className='static flex justify-around w-32 h-14'>
+        <Star />
+        <Setting />
+        <Search />
+      </div>
     </div>
   )
 }

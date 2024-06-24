@@ -12,8 +12,6 @@ export function useBooleanState(initialValue: boolean):
     on: () => setValue(true),
     off: () => setValue(false)
   })
-
-
   return [value, updateValue.current];
 }
 

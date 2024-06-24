@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 interface User{
   userId: string,
   email?: string,
-  namee?: string,
+  name?: string,
   birthDate?: string,
   phoneNumber?: string,
   userMainAccount?: string
@@ -24,6 +24,9 @@ export default function Home() {
     queryFn: () => getInfo(),
     staleTime: 5*100,
   })
+
+  
+
   console.log(data);
 
   return (

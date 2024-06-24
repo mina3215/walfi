@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import WalfiLogo from '../walfi-logo';
 import IconsWrapper from './header-icons';
-import HeaderNav from '../headernav';
+import HeaderNav from './headernav';
 import SolidStar from '../../public/solidstar.svg';
 
 export default function Header() {
