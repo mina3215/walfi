@@ -1,9 +1,9 @@
-import postData from './util-fetch';
+import { requestPost } from '@/utils/http-common';
 
 export default async function RequestLogin(
   formData: FormData
 ) {
   const data = Object.fromEntries(formData);
-  const response = await postData({ url: '/user/login', data });
+  const response = requestPost('/user/login', data);
   return response;
 };

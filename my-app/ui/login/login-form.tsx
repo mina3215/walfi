@@ -24,7 +24,7 @@ export default function LoginForm() {
     mutationFn: RequestLogin,
     onSuccess: (data) => {
       // router.push('/');
-      console.log(data.json());
+      console.log('호출',data.headers);
     },
     onError: (error) => {console.error(error, '실패')}
   });

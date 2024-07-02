@@ -35,9 +35,3 @@ export default function Home() {
     </div>
   );
 }
-
-// export default function Page() {
-//   return <div>
-//     <p>home1</p>
-//   </div>
-// }
