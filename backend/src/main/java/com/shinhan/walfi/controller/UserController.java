@@ -18,7 +18,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @CrossOrigin(origins="http://localhost:3000")
 public class UserController {
-
     private final UserService userService;
 
     @GetMapping
@@ -43,7 +42,4 @@ public class UserController {
 
         return ResponseEntity.status(res.getStatus()).body(res);
     }
-
-
-
 }
