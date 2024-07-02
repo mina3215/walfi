@@ -1,5 +1,5 @@
 .container {
-  @apply w-[1280px] mx-auto px-52;
+  @apply w-[1280px] mx-auto;
 }
 
 .inputBox {
@@ -7,11 +7,11 @@
 }
 
 .btn {
-  @apply  border-blue-500 bg-blue-500 text-white;
+  @apply border border-blue-500 bg-blue-500 text-white;
 }
 
 .title {
-  @apply py-20 px-16 text-[25px] text-blue-400;
+  @apply pt-20 pb-5 px-10 text-[25px] text-blue-400;
 }
 
 /* SideBar */

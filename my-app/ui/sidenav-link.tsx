@@ -1,13 +1,7 @@
 import Link from 'next/link';
 import clsx from 'clsx';
 import { usePathname } from 'next/navigation';
-
-interface SideNavLinkProps {
-  link: {
-    name: string;
-    href: string;
-  };
-}
+import { SideNavLinkProps } from '@/types/menuprops';
 
 export default function SideNavLink({ link }: SideNavLinkProps) {
   const pathname = usePathname();

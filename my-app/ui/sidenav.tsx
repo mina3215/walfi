@@ -2,16 +2,7 @@
 
 import style from '@/ui/global.module.css';
 import SideNavLink from '@/ui/sidenav-link';
-
-interface Link {
-  name: string;
-  href: string;
-}
-
-interface SideNavProps {
-  title: string;
-  links: Link[];
-}
+import { SideNavProps } from '@/types/menuprops';
 
 export default function SideNav({ title, links }: SideNavProps) {
   return (

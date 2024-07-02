@@ -6,8 +6,6 @@ import { useState } from 'react';
 
 export default function LoginTab() {
   const [isActive, setIsActive] = useState(false);
-  const loginStyle = isActive ? style.inactive : style.active;
-  const smartLoginStyle = isActive ? style.active : style.inactive;
 
   return (
     <div className='flex items-center justify-center pt-10 pb-16'>
@@ -16,14 +14,14 @@ export default function LoginTab() {
         onClick={() => {
           if (isActive === false) setIsActive(!isActive)
         }}
-        className={smartLoginStyle}
+        className={isActive ? style.active : style.inactive}
       >스마트 로그인</Link>
       <Link 
         href='/login' 
         onClick={() => {
           if (isActive === true) setIsActive(!isActive)
         }}
-        className={loginStyle}
+        className={isActive ? style.inactive : style.active}
       >ID / 비밀번호</Link>
     </div>
   );

@@ -1,0 +1,61 @@
+.redtext {
+  @apply text-red-500;
+}
+
+.bluetext {
+  @apply text-blue-500;
+}
+
+.titletext {
+  @apply text-[15px] font-semibold text-gray-600;
+}
+
+.subtext {
+  @apply text-[12px] pt-1;
+}
+
+.indexbox {
+  @apply rounded py-1 px-3 text-[12px];
+}
+
+/* Transfer Form */
+
+.theadstyle {
+  @apply py-5 pl-5 bg-blue-50 border-r border-gray-300 w-1/5;
+}
+
+.theadtext {
+  @apply text-left text-[14px] text-gray-600;
+}
+
+.formbtn {
+  @apply text-[12px] text-blue-500 border border-gray-300 bg-blue-50 rounded-sm py-[0.8px] px-2;
+}
+
+.downdrop {
+  @apply border border-gray-500 rounded-sm py-[0.5px] pl-1 pr-7 text-[14px] text-gray-500;
+}
+
+.forminput {
+  @apply border border-gray-400 rounded-sm bg-green-200 py-[0.5px] px-2 text-[12px] text-end;
+}
+
+/* Information Check */
+
+.semititle {
+  @apply text-[18px] text-blue-500 font-light;
+}
+
+/* Modal */
+
+.overlay {
+  @apply absolute flex items-center justify-center w-full h-full top-1 left-40;
+}
+
+.modaltheadstyle {
+  @apply py-2 pl-5 bg-blue-50 border-r border-gray-300 w-1/3;
+}
+
+.modalbtn {
+  @apply py-1 px-3 border rounded-md text-[12px] text-white
+}
