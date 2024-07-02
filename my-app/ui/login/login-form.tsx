@@ -6,6 +6,7 @@ import style from '@/ui/global.module.css'
 import { FormEvent } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { setToken } from '@/utils/localstorage';
 
 function LoginButton() {
   return(
@@ -23,8 +24,8 @@ export default function LoginForm() {
   const mutation = useMutation({
     mutationFn: RequestLogin,
     onSuccess: (data) => {
-      // router.push('/');
-      console.log('호출',data.headers);
+      setToken(data.headers['access-token']);
+      router.push('/');
     },
     onError: (error) => {console.error(error, '실패')}
   });
