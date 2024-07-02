@@ -35,3 +35,9 @@ export interface TransferHeaderProps {
 export interface IndexStyleProps {
   activeIndex: string;
 }
+
+// transfer modal
+
+export interface TransferModal {
+  show: () => void;
+}

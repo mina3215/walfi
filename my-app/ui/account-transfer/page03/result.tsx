@@ -1,6 +1,6 @@
 import global from '@/ui/global.module.css';
 import style from '@/ui/account-transfer/transfer.module.css';
-import CurrentTime from '@/ui/account-transfer/current-time';
+import CurrentTime from '@/ui/current-time';
 
 export default function Result() {
   return (

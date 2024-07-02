@@ -1,8 +1,10 @@
 'use client';
 
+import React, { useState } from 'react';
 import global from '@/ui/global.module.css';
 import style from '@/ui/account-transfer/transfer.module.css';
-import CurrentTime from '@/ui/account-transfer/current-time';
+import CurrentTime from '@/ui/current-time';
+import TransferableAmount from '@/ui/account-transfer/page01/transferable-amount';
 
 export function InformationCircle() {
   return (
@@ -13,34 +15,52 @@ export function InformationCircle() {
 }
 
 export default function TransferForm() {
+
+  const [isInput, setIsInput] = useState(false);
+  const handleButtonClick = () => {
+    setIsInput(!isInput);
+  };
+
+  const [showModal, setShowModal] = useState(false);
+  const clickModal = () => setShowModal(!showModal);
+
+  const [inputValue, setInputValue] = useState('');
+  const inputBtnClick = (value: string) => {
+    const currentValue: number = Number(value.replaceAll(",", ""));
+    setInputValue(currentValue.toLocaleString());
+  };
+
   return (
     <div className='py-5 pl-10'>
       <CurrentTime />
       <form className='pt-3'>
+        <div>
+          {showModal && <TransferableAmount show={clickModal} />}
+        </div>
         <table className='w-full'>
           <tbody>
             <tr className='border-t border-gray-500'>
               <th className={`${style.theadstyle} ${style.theadtext}`}>출금계좌번호</th>
               <td className='pl-5'>
                 <div className='flex items-center pt-5'>
-                  <select 
-                    id='accounts' 
-                    className={style.downdrop}
-                  >
-                    <option value='none'>선택하십시오.</option>
-                    <option value='none'>선택하십시오.</option>
-                    <option value='none'>선택하십시오.</option>
-                  </select>
+                  {isInput ? (
+                    <input type='text' className={style.forminput}/>
+                  ) : (
+                    <select id='accounts' className={style.downdrop}>
+                      <option value='none'>선택하십시오.</option>
+                      <option value='none'>선택하십시오.</option>
+                      <option value='none'>선택하십시오.</option>
+                    </select>
+                  )}
                   <div className='pl-3'>
-                    <button type='button' className={style.formbtn}>계좌직접입력</button>
+                    <button type='button' className={style.formbtn} onClick={handleButtonClick}>
+                      {isInput ? '계좌 선택' : '계좌 직접 입력'}
+                    </button>
                   </div>
                 </div>
                 <div className='flex items-center pt-2 pb-5'>
                   <div>
-                    <button type='button' className={style.formbtn}>이체가능금액</button>
-                  </div>
-                  <div className='pl-3'>
-                    <button type='button' className={style.formbtn}>자주쓰는이체</button>
+                    <button type='button' className={style.formbtn} onClick={clickModal}>이체가능금액</button>
                   </div>
                 </div>
               </td>
@@ -49,35 +69,34 @@ export default function TransferForm() {
               <th className={`${style.theadstyle} ${style.theadtext}`}>이체금액</th>
               <td className='pl-5'>
                 <div className='flex items-center pt-5'>
-                  <input type='number' className={style.forminput}/>
-                  <div className='pl-3'>
-                    <button
-                      type='button'
-                      className='border border-gray-300 rounded-sm py-1 px-1 text-[12px] text-gray-500'
-                    >계산기</button>
-                  </div>
+                  <input 
+                    type='number' 
+                    className={style.forminput}
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                  />
                 </div>
                 <div className='flex items-center pt-2 pb-5'>
                   <div>
-                    <button type='button' className={style.formbtn}>전액</button>
+                    <button type='button' className={style.formbtn} onClick={() => inputBtnClick('')}>전액</button>
                   </div>
                   <div className='pl-3'>
-                    <button type='button' className={style.formbtn}>만원</button>
+                    <button type='button' className={style.formbtn} onClick={() => inputBtnClick('10000')}>만원</button>
                   </div>
                   <div className='pl-3'>
-                    <button type='button' className={style.formbtn}>5만원</button>
+                    <button type='button' className={style.formbtn} onClick={() => inputBtnClick('')}>5만원</button>
                   </div>
                   <div className='pl-3'>
-                    <button type='button' className={style.formbtn}>10만원</button>
+                    <button type='button' className={style.formbtn} onClick={() => inputBtnClick('')}>10만원</button>
                   </div>
                   <div className='pl-3'>
-                    <button type='button' className={style.formbtn}>50만원</button>
+                    <button type='button' className={style.formbtn} onClick={() => inputBtnClick('')}>50만원</button>
                   </div>
                   <div className='pl-3'>
-                    <button type='button' className={style.formbtn}>100만원</button>
+                    <button type='button' className={style.formbtn} onClick={() => inputBtnClick('')}>100만원</button>
                   </div>
                   <div className='pl-3'>
-                    <button type='button' className={style.formbtn}>정정</button>
+                    <button type='button' className={style.formbtn} onClick={() => inputBtnClick('')}>정정</button>
                   </div>
                 </div>
               </td>
@@ -105,7 +124,7 @@ export default function TransferForm() {
                   </div>
                   <input 
                     type='text' 
-                    className='border border-gray-400 rounded-sm py-1 px-2 text-[12px]'
+                    className='border border-gray-400 rounded-sm py-[0.5px] px-2 text-[12px]'
                     placeholder='직접입력'
                   />
                 </div>
@@ -128,7 +147,7 @@ export default function TransferForm() {
                 <div className='flex items-center py-5'>
                   <input 
                       type='password' 
-                      className='border border-gray-400 rounded-sm py-1 px-2 text-[12px]'
+                      className='border border-gray-400 rounded-sm py-[0.5px] px-2 text-[12px]'
                   />
                   <div className='flex items-center pl-3'>
                     <InformationCircle />

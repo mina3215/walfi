@@ -29,8 +29,7 @@ export default function SendHow({route, navigation}){
   const form_balance = ChangeForm(balance); // 잔액을 돈 형식 정규화
   // 입력 금액 
   const [money, setMoney] = useState(0); // 입력 금액 (문자)
-
-  const num_money = Number(money); // 입력 금액 -> 숫자
+  const num_money=Number(money); // 입력 금액 -> 숫자
   const form_money = ChangeForm(money);
 
   // 원화로 계산한 외화
