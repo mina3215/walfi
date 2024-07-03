@@ -9,9 +9,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
 export default function SearchBar({ className, children, placeholder}: InputProps) {
   const searchParams = useSearchParams();
-  // const pathname = usePathname();
-  // const { replace } = useRouter();
-
+  
   function handleSearch(term: string) {
     console.log(term);
   }

@@ -21,6 +21,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/user")
 @RequiredArgsConstructor
+//@CrossOrigin(origins="http://localhost:3000")
 public class UserController {
 
     private final JWTUtil jwtUtil;

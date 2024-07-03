@@ -20,6 +20,7 @@ const config: Config = {
       colors: {
         blue: {
           750: '#0059b1',
+          650: '#4839FB'
         }
       }
     },

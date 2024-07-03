@@ -2,7 +2,7 @@ import './globals.css'
 import { Metadata } from 'next';
 import Header from '@/ui/header/header'
 import RecoilRootProvider from '../utils/recoilRootProvider';
-// import HeaderNav from '@/ui/headernav';
+
 
 export const metadata: Metadata = {
   title: {
