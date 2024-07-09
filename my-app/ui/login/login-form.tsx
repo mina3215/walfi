@@ -1,7 +1,7 @@
 'use client';
 
 import { useMutation } from '@tanstack/react-query';
-import RequestLogin from '@/services/auth';
+import {RequestLogin} from '@/services/auth';
 import style from '@/ui/global.module.css'
 import { FormEvent } from 'react';
 import Link from 'next/link';
@@ -21,7 +21,9 @@ function LoginButton() {
 
 export default function LoginForm() {
   const router = useRouter();
+  
   const mutation = useMutation({
+    mutationKey : ['login'],
     mutationFn: RequestLogin,
     onSuccess: (data) => {
       setToken(data.headers['access-token']);

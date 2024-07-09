@@ -1,8 +1,10 @@
 
 export function getToken() {
   if (typeof window !== 'undefined') {
+    // console.log(localStorage.getItem('token'));
     return localStorage.getItem('token');
   }
+  return undefined
 }
 
 export function setToken(token: string) {
@@ -10,6 +12,3 @@ export function setToken(token: string) {
     localStorage.setItem('token',token)
   }
 }
-
-
-

@@ -23,7 +23,9 @@ export default function RootLayout({
         <div>
           <Header />
         </div>
-        <RecoilRootProvider>{children}</RecoilRootProvider>
+        <RecoilRootProvider>
+          {children}
+        </RecoilRootProvider>
       </body>
     </html>
   );
