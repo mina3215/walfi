@@ -117,6 +117,7 @@ public class UserServiceImpl implements UserService {
         return UserDto.builder()
                 .userId(user.getUserId())
                 .email(user.getEmail())
+                .name(user.getName())
                 .birthDate(user.getBirthDate())
                 .phoneNumber(user.getPhoneNumber())
                 .userMainAccount(user.get대표계좌())
