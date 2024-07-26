@@ -2,11 +2,11 @@
 
 import { useMutation } from '@tanstack/react-query';
 import RequestLogin from '@/services/auth';
-import style from '@/ui/global.module.css'
+import style from '@/ui/global.module.css';
 import { FormEvent } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { setToken } from '@/utils/localstorage';
+import { setToken, setAccount } from '@/utils/localstorage';
 
 function LoginButton() {
   return(
@@ -22,12 +22,17 @@ function LoginButton() {
 export default function LoginForm() {
   const router = useRouter();
   const mutation = useMutation({
+    mutationKey : ['login'],
     mutationFn: RequestLogin,
     onSuccess: (data) => {
       setToken(data.headers['access-token']);
+      setAccount(data.data.data.userMainAccount);
       router.push('/');
     },
-    onError: (error) => {console.error(error, '실패')}
+    onError: (error) => {
+      console.error(error, '실패')
+      alert("아이디와 비밀번호를 다시 확인해주세요.");
+    }
   });
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {

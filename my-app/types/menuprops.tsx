@@ -40,4 +40,5 @@ export interface IndexStyleProps {
 
 export interface TransferModal {
   show: () => void;
+  account: any;
 }
