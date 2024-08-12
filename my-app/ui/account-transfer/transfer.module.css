@@ -49,7 +49,7 @@
 /* Modal */
 
 .overlay {
-  @apply absolute flex items-center justify-center w-full h-full top-1 left-40;
+  @apply absolute flex items-center justify-center top-1/4 left-1/3 z-10;
 }
 
 .modaltheadstyle {

@@ -1,10 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import global from '@/ui/global.module.css';
 import style from '@/ui/account-transfer/transfer.module.css';
 import CurrentTime from '@/ui/current-time';
 import TransferableAmount from '@/ui/account-transfer/page01/transferable-amount';
+import { useMutation } from '@tanstack/react-query';
+import RequestAccount from '@/services/account';
 
 export function InformationCircle() {
   return (
@@ -15,19 +17,56 @@ export function InformationCircle() {
 }
 
 export default function TransferForm() {
+  // 계좌선택
+  const [selectAccounts, setSelectAccounts] = useState([]);
+  const [selectedAccount, setSelectedAccount] = useState(); // 선택된 계좌번호
+  const [inputValue, setInputValue] = useState(''); // 이체금액
 
+  const mutation = useMutation({
+    mutationKey : ['account'],
+    mutationFn: RequestAccount,
+    onSuccess: (data) => {
+      const accounts = data.data.data.accountDtoList.filter(account => {
+        return account["구분"] === "예적금" && account["통화"] === "KRW";
+      });
+      setSelectAccounts(accounts)
+      console.log(accounts);
+    },
+    onError: (error) => {
+      console.error(error, '실패')
+    }
+  });
+
+  useEffect(() => {
+    mutation.mutate();
+  }, [])
+
+  const handleSelectChange = (e: any) => {
+    const a = selectAccounts.find(account => account['계좌번호'] === e.target.value);
+    setSelectedAccount(a);
+    setInputValue(''); // 이체 금액 초기화
+  }
+
+  // 계좌직접입력
   const [isInput, setIsInput] = useState(false);
   const handleButtonClick = () => {
     setIsInput(!isInput);
   };
 
+  // 계좌잔액확인 모달창
   const [showModal, setShowModal] = useState(false);
   const clickModal = () => setShowModal(!showModal);
 
-  const [inputValue, setInputValue] = useState('');
+  // 이체금액입력
   const inputBtnClick = (value: string) => {
-    const currentValue: number = Number(value.replaceAll(",", ""));
-    setInputValue(currentValue.toLocaleString());
+    if (value) {
+      const currentValue: number = Number(value.replaceAll(",", ""));
+      const newValue: number = currentValue + Number(inputValue.replaceAll(",", ""));
+      setInputValue(newValue.toLocaleString());
+    } else {
+      const currentValue: number = Number(value.replaceAll(",", ""));
+      setInputValue(currentValue.toLocaleString());
+    }
   };
 
   return (
@@ -35,9 +74,9 @@ export default function TransferForm() {
       <CurrentTime />
       <form className='pt-3'>
         <div>
-          {showModal && <TransferableAmount show={clickModal} />}
+          {showModal && <TransferableAmount show={clickModal} account={selectedAccount}/>}
         </div>
-        <table className='w-full'>
+        <table className='w-full relative'>
           <tbody>
             <tr className='border-t border-gray-500'>
               <th className={`${style.theadstyle} ${style.theadtext}`}>출금계좌번호</th>
@@ -46,10 +85,13 @@ export default function TransferForm() {
                   {isInput ? (
                     <input type='text' className={style.forminput}/>
                   ) : (
-                    <select id='accounts' className={style.downdrop}>
+                    <select id='accounts' className={style.downdrop} onChange={handleSelectChange}>
                       <option value='none'>선택하십시오.</option>
-                      <option value='none'>선택하십시오.</option>
-                      <option value='none'>선택하십시오.</option>
+                      {selectAccounts.map(account => (
+                        <option key={account['계좌번호']} value={account['계좌번호']}>
+                          {account['계좌번호']}
+                        </option>
+                      ))}
                     </select>
                   )}
                   <div className='pl-3'>
@@ -70,7 +112,7 @@ export default function TransferForm() {
               <td className='pl-5'>
                 <div className='flex items-center pt-5'>
                   <input 
-                    type='number' 
+                    type='text' 
                     className={style.forminput}
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
@@ -78,22 +120,22 @@ export default function TransferForm() {
                 </div>
                 <div className='flex items-center pt-2 pb-5'>
                   <div>
-                    <button type='button' className={style.formbtn} onClick={() => inputBtnClick('')}>전액</button>
+                    <button type='button' className={style.formbtn} onClick={() => inputBtnClick(`${selectedAccount['잔액원화']}`)}>전액</button>
                   </div>
                   <div className='pl-3'>
                     <button type='button' className={style.formbtn} onClick={() => inputBtnClick('10000')}>만원</button>
                   </div>
                   <div className='pl-3'>
-                    <button type='button' className={style.formbtn} onClick={() => inputBtnClick('')}>5만원</button>
+                    <button type='button' className={style.formbtn} onClick={() => inputBtnClick('50000')}>5만원</button>
                   </div>
                   <div className='pl-3'>
-                    <button type='button' className={style.formbtn} onClick={() => inputBtnClick('')}>10만원</button>
+                    <button type='button' className={style.formbtn} onClick={() => inputBtnClick('100000')}>10만원</button>
                   </div>
                   <div className='pl-3'>
-                    <button type='button' className={style.formbtn} onClick={() => inputBtnClick('')}>50만원</button>
+                    <button type='button' className={style.formbtn} onClick={() => inputBtnClick('500000')}>50만원</button>
                   </div>
                   <div className='pl-3'>
-                    <button type='button' className={style.formbtn} onClick={() => inputBtnClick('')}>100만원</button>
+                    <button type='button' className={style.formbtn} onClick={() => inputBtnClick('1000000')}>100만원</button>
                   </div>
                   <div className='pl-3'>
                     <button type='button' className={style.formbtn} onClick={() => inputBtnClick('')}>정정</button>
@@ -107,6 +149,17 @@ export default function TransferForm() {
                 <div className='flex items-center py-5'>
                   <select id='bank' className={style.downdrop}>
                     <option value='none'>선택하십시오.</option>
+                    <option value='WF'>WALFI</option>
+                    <option value='NH'>NH농협</option>
+                    <option value='KB'>국민은행</option>
+                    <option value='IBK'>기업은행</option>
+                    <option value='SH'>신한은행</option>
+                    <option value='WR'>우리은행</option>
+                    <option value='HN'>하나은행</option>
+                    <option value='IM'>IM뱅크</option>
+                    <option value='Kakao'>카카오뱅크</option>
+                    <option value='Toss'>토스뱅크</option>
+                    <option value='Kbank'>케이뱅크</option>
                   </select>
                   <div className='pl-3'>
                     <button type='button' className={style.formbtn}>입금은행선택</button>

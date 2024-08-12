@@ -52,6 +52,7 @@ export function Page03() {
 }
 
 export default function AccountTransferPage() {
+
   return (
     <div>
       <div className={style.title}>

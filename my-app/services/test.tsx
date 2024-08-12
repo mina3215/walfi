@@ -13,7 +13,7 @@ interface User{
 
 async function getInfo() {
   return (
-    await fetch("http://localhost:8094/user").then(
+    await fetch("https://d87f-118-131-69-35.ngrok-free.app/user").then(
       (res) => res.json()
   ))as User[]
 }
