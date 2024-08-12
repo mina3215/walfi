@@ -1,8 +1,8 @@
 import { LoginedPhrase } from '@/ui/home/phrase';
 import AccountBox from '@/ui/home/account-box';
 import AccountList from '@/ui/home/account-list';
-import RecommandCard from '@/ui/card';
-import { cookies } from 'next/headers'
+import CardWrapper from '@/ui/home/card-wrapper';
+// import { cookies } from 'next/headers'
 
 
 export default function LoginedPage() {
@@ -17,9 +17,9 @@ export default function LoginedPage() {
           <AccountBox />
           <AccountList />
         </div>
-        <div id='recommand-product'>
+        <div id='recommand-product' className='mt-36'>
           <p>박민아 고객님께 추천하는 상품입니다.</p>
-          <RecommandCard/>
+          <CardWrapper/>
         </div>
       </div>
     </main>

@@ -41,9 +41,7 @@ public class AccountServiceImpl implements AccountService{
      * @param userMainAccount
      * @return AccountResDto
      */
-    public AccountResDto getAccounts(String userId, String userMainAccount) {
-
-        // ========= 일반 계좌들 조회 ========
+    private User getUser(String userId, String userMainAccount){
         User user = userRepository.find(userId);
 
         if (user == null) {
@@ -54,6 +52,13 @@ public class AccountServiceImpl implements AccountService{
             log.error("=== " + userMainAccount + "은 " + userId + "의 계좌가 아닌 예외 " +" ===");
             throw new AccountException(AccountErrorCode.NOT_A_USER_ACCOUNT);
         }
+        return user;
+    }
+
+    public AccountResDto getAccounts(String userId, String userMainAccount) {
+
+        // ========= 일반 계좌들 조회 ========
+        User user = getUser(userId, userMainAccount);
 
         List<Account> accounts = user.getAccounts();
         List<AccountDto> accountDtoList = accounts.stream()
@@ -78,6 +83,7 @@ public class AccountServiceImpl implements AccountService{
         return accountResDto;
 
     }
+
 
 
 

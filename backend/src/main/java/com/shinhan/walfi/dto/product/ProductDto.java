@@ -9,13 +9,13 @@ import javax.persistence.Column;
 @Builder
 public class ProductDto {
 
-    private String productName;
+    private String name;
 
-    private float baseInterestRate ;
+    private float baseRate ;
 
-    private float plusInterestRate;
+    private float addRate;
     
-    private int maxSubscriptionPeriod ;
+    private int period ;
 
     private String info;
 }

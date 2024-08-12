@@ -6,12 +6,12 @@ import LogoutedPage from './logouted-page'
 
 
 export default function Home() {
-  const isLogined = validateToken();
-  // const isLogined = true;
+  // const isLogined = validateToken();
+  const isLogined = true;
   console.log(isLogined);
   return (
     <div>
-      {/* {isLogined?<LoginedPage/>:<LogoutedPage/>} */}
+      {isLogined?<LoginedPage/>:<LogoutedPage/>}
     </div>
   )
 }

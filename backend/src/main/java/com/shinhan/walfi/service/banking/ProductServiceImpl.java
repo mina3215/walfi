@@ -52,10 +52,10 @@ public class ProductServiceImpl implements ProductService{
 
     private ProductDto getProductDto(ProductInfo product) {
         return ProductDto.builder()
-                .productName(product.get상품명())
-                .baseInterestRate(product.get기본금리())
-                .plusInterestRate(product.get추가금리())
-                .maxSubscriptionPeriod(product.get가입최대기간())
+                .name(product.get상품명())
+                .baseRate(product.get기본금리())
+                .addRate(product.get추가금리())
+                .period(product.get가입최대기간())
                 .info(product.get상품설명())
                 .build();
     }
