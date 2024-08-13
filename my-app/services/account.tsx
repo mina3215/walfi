@@ -1,15 +1,6 @@
 import { requestPost } from '@/utils/http-common';
 
 export default async function RequestAccount() {
-  const account = localStorage.getItem('account');
-
-  if (!account) {
-    throw new Error('No data found in LocalStorage');
-  }
-
-  const data = {
-    "userMainAccount": account
-  };
-  const response = requestPost('/account', data);
+  const response = await requestPost('/account');
   return response;
 };

@@ -2,8 +2,6 @@ import { LoginedPhrase, RecommandPharase, PharaseBox } from '@/ui/home/phrase';
 import AccountBox from '@/ui/home/account-box';
 import AccountList from '@/ui/home/account-list';
 import CardWrapper from '@/ui/home/card-wrapper';
-// import { cookies } from 'next/headers'
-
 
 export default function LoginedPage() {
   return (
@@ -12,7 +10,7 @@ export default function LoginedPage() {
         <div id='main-phrase'>
           <PharaseBox component={LoginedPhrase}/>
         </div>
-        <div id='main-account-service' className='flex'>
+        <div id='main-account-service' className='flex items-end'>
           <AccountBox />
           <AccountList />
         </div>

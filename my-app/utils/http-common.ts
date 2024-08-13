@@ -10,7 +10,7 @@ const customAxios = axios.create({
 })
 
 export const requestGet = async (url:string, params = {}) => {
-  const token = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjM4MzIwMTEsImlhdCI6MTcyMzgzMjAxMSwidXNlcklkIjoic3NhZnkiLCJuYW1lIjoic3NhZnkifQ.jJpBc7Bn3Myy8o0Aw8dmD0SEfsjp50plbqqcHx6fWNo';
+  const token = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjM4NTU2MjQsImlhdCI6MTcyMzg1NTYyNCwidXNlcklkIjoic3NhZnkiLCJuYW1lIjoic3NhZnkifQ.Jv7p1o8zlnCdXl1vUXGulE9iM9-u15P-mLr4luxbmgg';
   const data = await customAxios.get(url, {
     params,
     headers: {
@@ -21,13 +21,13 @@ export const requestGet = async (url:string, params = {}) => {
 }
 
 export const requestPost = async (url:string, body = {}, headers = {}) => {
-  const token = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjM4MzIwMTEsImlhdCI6MTcyMzgzMjAxMSwidXNlcklkIjoic3NhZnkiLCJuYW1lIjoic3NhZnkifQ.jJpBc7Bn3Myy8o0Aw8dmD0SEfsjp50plbqqcHx6fWNo';
+  const token = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjM4NTU2MjQsImlhdCI6MTcyMzg1NTYyNCwidXNlcklkIjoic3NhZnkiLCJuYW1lIjoic3NhZnkifQ.Jv7p1o8zlnCdXl1vUXGulE9iM9-u15P-mLr4luxbmgg';
   const data = await customAxios.post(url, body,
     {
       headers: {
         ...headers,
         Authorization: token
       }
-    });
+    }).then(res => res.data);
   return data;
 }

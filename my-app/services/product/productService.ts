@@ -8,7 +8,8 @@ const queryKeys = {
 const queryOptions = {
   all: () => ({
     queryKey: queryKeys.all,
-    queryFn: () => requestGet('/product')
+    queryFn: () => requestGet('/product'),
+    staleTime: 10 * 60 * 1000,
   })
 }
 
