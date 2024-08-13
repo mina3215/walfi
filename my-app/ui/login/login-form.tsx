@@ -1,13 +1,8 @@
 'use client';
 
 import { useMutation } from '@tanstack/react-query';
-<<<<<<< HEAD
 import {RequestLogin} from '@/services/auth';
-import style from '@/ui/global.module.css'
-=======
-import RequestLogin from '@/services/auth';
 import style from '@/ui/global.module.css';
->>>>>>> 7d798bffb1f5daf02ad17f24dfb9e142cd228989
 import { FormEvent } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
