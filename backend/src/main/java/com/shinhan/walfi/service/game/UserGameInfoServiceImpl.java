@@ -41,20 +41,20 @@ public class UserGameInfoServiceImpl implements UserGameInfoService{
     @Override
     public UserGameInfoDto getUserGameInfo(String userId) {
 
-        User user = userRepository.find(userId);
-
-        UserGameInfo findUserGameInfo = userGameInfoRepository.findById(userId);
-
-        if (findUserGameInfo == null || user == null) {
-            log.error("=== 틀린 비밀번호이거나 존재하지 않는 회원 ===");
-            throw new UserException(NO_MATCHING_USER);
-        }
-
-        CryptoWallet wallet = cryptoWalletRepository.findWallet(user.get대표계좌(), CoinType.SEP);
-        String ethBalance = cryptoUtil.checkBalance(wallet.getAddress());
-
-        return  UserGameInfoDto.getUserGameInfoDto(findUserGameInfo, user.getName(), ethBalance);
-
+//        User user = userRepository.find(userId);
+//
+//        UserGameInfo findUserGameInfo = userGameInfoRepository.findById(userId);
+//
+//        if (findUserGameInfo == null || user == null) {
+//            log.error("=== 틀린 비밀번호이거나 존재하지 않는 회원 ===");
+//            throw new UserException(NO_MATCHING_USER);
+//        }
+//
+//        CryptoWallet wallet = cryptoWalletRepository.findWallet(user.get대표계좌(), CoinType.SEP);
+//        String ethBalance = cryptoUtil.checkBalance(wallet.getAddress());
+//
+//        return  UserGameInfoDto.getUserGameInfoDto(findUserGameInfo, user.getName(), ethBalance);
+        return null;
     }
 
     /**

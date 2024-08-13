@@ -23,7 +23,8 @@ public class TokenServiceImpl implements TokenService {
 
     @Override
     public Boolean getValidation(String token) {
-        return jwtUtil.validateToken(token, null);
+        final String accessToken = token.substring(7);
+        return jwtUtil.validateToken(accessToken, null);
     }
 
     @Override

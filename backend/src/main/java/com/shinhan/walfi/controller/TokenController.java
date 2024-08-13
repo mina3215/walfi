@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 @RequiredArgsConstructor
 @RequestMapping("/token")
 @Slf4j
+//@CrossOrigin(origins="*")
 public class TokenController {
     private final TokenService tokenService;
 
@@ -32,6 +33,7 @@ public class TokenController {
     @PostMapping("/validate/access")
     public ResponseEntity<String> getAccessValidation (@RequestHeader("Authorization") String accessToken) {
         try {
+//            final String accessToken = accessToken.substring(7);
             Boolean isValid = tokenService.getValidation(accessToken);
             if (isValid) {
                 return ResponseEntity.status(200).body("VALID ACCESS TOKEN ");

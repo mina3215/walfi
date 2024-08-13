@@ -2,22 +2,23 @@ package com.shinhan.walfi.controller;
 
 import com.shinhan.walfi.domain.HttpResult;
 import com.shinhan.walfi.domain.User;
+import com.shinhan.walfi.dto.UserDto;
 import com.shinhan.walfi.dto.banking.AccountReqDto;
 import com.shinhan.walfi.dto.banking.AccountResDto;
 import com.shinhan.walfi.dto.banking.ProductReqDto;
+import com.shinhan.walfi.dto.product.ProductDto;
+import com.shinhan.walfi.dto.product.ProductResDto;
 import com.shinhan.walfi.service.banking.AccountService;
 import com.shinhan.walfi.service.banking.ProductService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.SimpleTimeZone;
 
 @RestController
@@ -26,6 +27,17 @@ import java.util.SimpleTimeZone;
 public class ProductController {
 
     private final ProductService productService;
+
+    @GetMapping
+    @ApiOperation(value = "금융 상품 목록 조회")
+    public ResponseEntity<HttpResult> getUserList(){
+        List<ProductDto> productList = productService.getProductList();
+
+        HttpResult res;
+        res = HttpResult.getSuccess();
+        res.setData(productList);
+        return ResponseEntity.status(res.getStatus()).body(res);
+    }
 
     @PostMapping("/create")
     @ApiOperation(value = "정기예금 생성")

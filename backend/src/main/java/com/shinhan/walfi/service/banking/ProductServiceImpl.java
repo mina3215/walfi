@@ -3,16 +3,23 @@ package com.shinhan.walfi.service.banking;
 import com.shinhan.walfi.domain.User;
 import com.shinhan.walfi.domain.banking.Account;
 import com.shinhan.walfi.domain.banking.ExchangeHistory;
+import com.shinhan.walfi.domain.banking.ProductInfo;
+import com.shinhan.walfi.dto.UserDto;
 import com.shinhan.walfi.dto.banking.ExchangeDto;
+import com.shinhan.walfi.dto.product.ProductDto;
 import com.shinhan.walfi.exception.*;
 import com.shinhan.walfi.mapper.BankMapper;
 import com.shinhan.walfi.repository.UserRepository;
 import com.shinhan.walfi.repository.banking.AccountRepository;
+import com.shinhan.walfi.repository.banking.ProductRepostiory;
 import com.shinhan.walfi.util.AccountUtil;
 import com.shinhan.walfi.util.DateConversionUtil;
 import com.shinhan.walfi.util.ExchangeUtil;
+import com.shinhan.walfi.util.JWTUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,12 +28,15 @@ import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
 @Transactional
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService{
+
+    private final ProductRepostiory productRepostiory;
 
     private final AccountRepository accountRepository;
 
@@ -39,6 +49,26 @@ public class ProductServiceImpl implements ProductService{
     private final AccountUtil accountUtil;
 
     private final BankMapper bankMapper;
+
+    private ProductDto getProductDto(ProductInfo product) {
+        return ProductDto.builder()
+                .name(product.get상품명())
+                .baseRate(product.get기본금리())
+                .addRate(product.get추가금리())
+                .period(product.get가입최대기간())
+                .info(product.get상품설명())
+                .build();
+    }
+
+    @Override
+    public List<ProductDto> getProductList() {
+        List<ProductInfo> productList = productRepostiory.findAllProduct();
+
+        List<ProductDto> dto = productList.stream().map(product -> getProductDto(product)).collect(Collectors.toList());
+        log.info("=== 사용자 리스트 조회 ===");
+        return dto;
+    }
+
 
     /**
      * 정기적금 상품 가입

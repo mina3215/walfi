@@ -48,12 +48,12 @@ public class UserController {
         // FIXME: 로그인 예외 처리 Refactoring 하기
         if (tokenDto.isLoginSuccessful()) {
             UserDto userDto = userService.findUserById(loginReqDto.getUserId());
-
+//            logger.info("UserDto: {}", userDto);
             final String accessToken = tokenDto.getACCESS_TOKEN();
             final String refreshToken = tokenDto.getREFRESH_TOKEN();
 
             Cookie cookie = new Cookie("Refresh-Token", refreshToken);
-            cookie.setMaxAge(60 * 60 * 24 * 3); // 3일
+            cookie.setMaxAge(60 * 60 * 24 * 30); // 30일
             cookie.setPath("/");
 //            cookie.setSecure(true);
 //            cookie.setHttpOnly(true);
@@ -64,6 +64,7 @@ public class UserController {
             res = HttpResult.getSuccess();
             res.setMessage("정상적으로 로그인이 완료됐습니다.");
             res.setData(userDto);
+//            System.out.println(res);
         } else {
             res = new HttpResult(HttpStatus.FORBIDDEN, HttpResult.Result.ERROR,"아이디 혹은 비밀번호가 잘못 됐습니다.");
         }
