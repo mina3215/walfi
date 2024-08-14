@@ -84,28 +84,31 @@ export default function HeaderNavLink() {
   }
 
   return (
+    <div onMouseLeave={setOpen.off}>
     <div className='flex w-[1280px] mx-auto justify-around items-center font-bold' >
       {links.map((link, idx) => 
-          <div key={link.name} className='flex justify-center w-[100px] h-[40px]' onMouseLeave={setOpen.off} onMouseOver={() => isOver(idx)} onFocus={()=>0}>
+          <div key={link.name} className='flex justify-center w-[100px] h-[40px]' onMouseOver={() => isOver(idx)} onFocus={()=>0}>
             <Link
               key={link.name}
               href={link.href}
               className={clsx(
                 'flex w-[100px] p-2 mx-auto justify-center items-center',
                 {
-                  'absolute text-center align-middle bg-blue-750 text-white h-[50px] w-[80px] z-10 top-[70px]': isOpen && idx === index
+                  'absolute text-center align-middle bg-blue-750 text-white h-[50px] w-[80px] z-20 -translate-y-2.5': isOpen && idx === index
                 },
               )}
             >
               <p>{link.name}</p>
-            </Link>
-
-            {isOpen && idx === index && link.list &&
-              <DropMenu sublinks={link.list} />
-            }
+          </Link>
         </div>
       )}
-      <Bars3Icon className='size-8 w-[100px] cursor-pointer' />
+      <Bars3Icon className='size-8 w-[100px] cursor-pointer' onMouseOver={setOpen.off} />
+      </div>
+      <div className='relative'>
+        {isOpen &&
+          <DropMenu sublinks={links[index].list} />
+        }
+      </div>
     </div>
   )
 }
