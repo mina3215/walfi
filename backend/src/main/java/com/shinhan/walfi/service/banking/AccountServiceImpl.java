@@ -10,6 +10,7 @@ import com.shinhan.walfi.exception.AccountException;
 import com.shinhan.walfi.exception.UserErrorCode;
 import com.shinhan.walfi.exception.UserException;
 import com.shinhan.walfi.repository.UserRepository;
+import com.shinhan.walfi.repository.banking.AccountRepository;
 import com.shinhan.walfi.repository.banking.CryptoWalletRepository;
 import com.shinhan.walfi.util.CryptoUtil;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +30,8 @@ public class AccountServiceImpl implements AccountService{
     private final UserRepository userRepository;
 
     private final CryptoWalletRepository cryptoWalletRepository;
+
+    private final AccountRepository accountRepository;
 
     private final CryptoUtil cryptoUtil;
 
@@ -84,7 +87,19 @@ public class AccountServiceImpl implements AccountService{
 
     }
 
+    public AccountResDto getNationAccounts(String userId, String userMainAccount, String currency){
+        // ========= 일반 계좌들 조회 ========
+        User user = getUser(userId, userMainAccount);
 
+        List<Account> accounts = accountRepository.findNationAccountNum(userMainAccount, currency);
+        List<AccountDto> accountDtoList = accounts.stream()
+                .map(account -> AccountDto.accountToAccountDto(account))
+                .collect(Collectors.toList());
+        AccountResDto accountResDto = AccountResDto.getAccountResDto(userId, accountDtoList);
+
+        return accountResDto;
+
+    }
 
 
 
