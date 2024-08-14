@@ -2,15 +2,18 @@ import Link from 'next/link';
 import WalfiLogo from '../walfi-logo';
 import IconsWrapper from './header-icons';
 import HeaderNav from './headernav';
-import SolidStar from '../../public/solidstar.svg';
+import { LoginButton } from '../buttons';
 
 export default function Header() {
   return (
     <>
-      <div className='relative flex justify-between w-[1280px] mx-auto'>
-        <Link href='/'>
-          <WalfiLogo />
-        </Link>
+      <div id='logo-icons' className='relative flex justify-between w-[1280px] mx-auto'>
+        <div>
+          <Link href='/'>
+            <WalfiLogo />
+          </Link>
+          <LoginButton/>
+        </div>
         <IconsWrapper />
       </div>
       <div className='border-y'>

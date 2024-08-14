@@ -48,8 +48,8 @@ function Search() {
 
 export default function IconsWrapper() {
   return (
-    <div>
-      <div className='static flex justify-around w-32 h-14'>
+    <div className='flex items-center'>
+      <div className='static flex justify-around items-center w-32 h-14'>
         <Star />
         <Setting />
         <Search />

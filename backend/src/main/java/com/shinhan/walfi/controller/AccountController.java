@@ -10,10 +10,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
 @RestController
@@ -23,11 +20,12 @@ public class AccountController {
 
     private final AccountService accountService;
 
-    @PostMapping
+    @GetMapping
     @ApiOperation(value = "대표 계좌로 사용자가 가진 실질 계좌들을 조회")
-    public ResponseEntity<HttpResult> getAccounts(@ApiIgnore @AuthenticationPrincipal User user, @RequestBody AccountReqDto accountReqDto) {
+    public ResponseEntity<HttpResult> getAccounts(@ApiIgnore @AuthenticationPrincipal User user) {
         String userId = user.getUserId();
-        AccountResDto accountResDto = accountService.getAccounts(userId, accountReqDto.getUserMainAccount());
+        String mainAccount = user.get대표계좌();
+        AccountResDto accountResDto = accountService.getAccounts(userId, mainAccount);
 
         HttpResult res;
 
@@ -36,6 +34,22 @@ public class AccountController {
 
         return ResponseEntity.status(res.getStatus()).body(res);
     }
+
+    @GetMapping("/currency")
+    @ApiOperation(value = "통화에 맞는 통장들만 선택")
+    public ResponseEntity<HttpResult> getNationAccounts(@ApiIgnore @AuthenticationPrincipal User user, @RequestParam String currency) {
+        String userId = user.getUserId();
+        String mainAccount = user.get대표계좌();
+        AccountResDto accountResDto = accountService.getNationAccounts(userId, mainAccount, currency);
+
+        HttpResult res;
+
+        res = HttpResult.getSuccess();
+        res.setData(accountResDto);
+
+        return ResponseEntity.status(res.getStatus()).body(res);
+    }
+
 
     
 }

@@ -11,7 +11,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -36,6 +38,20 @@ public class UserController {
         res = HttpResult.getSuccess();
         res.setData(userList);
         return ResponseEntity.status(res.getStatus()).body(res);
+    }
+
+
+    @ApiOperation(value = "유저 정보 조회")
+    @GetMapping("/userinfo")
+    public ResponseEntity<HttpResult> getUserInfo(@ApiIgnore @AuthenticationPrincipal User user){
+        UserDto userInfo = userService.findUserById(user.getUserId());
+
+        HttpResult res;
+        res = HttpResult.getSuccess();
+        res.setData(userInfo);
+
+        return ResponseEntity.status(res.getStatus()).body(res);
+
     }
 
     @PostMapping("/login")
@@ -83,4 +99,6 @@ public class UserController {
         HttpResult result = HttpResult.getSuccess();
         return ResponseEntity.status(result.getStatus()).body(result);
     }
+
+    
 }
