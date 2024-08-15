@@ -7,7 +7,7 @@ import { LoginButton } from '../buttons';
 export default function Header() {
   return (
     <>
-      <div id='logo-icons' className='relative flex justify-between w-[1280px] mx-auto'>
+      <div id='logo-icons' className='relative flex justify-between w-[1080px] mx-auto'>
         <div>
           <Link href='/'>
             <WalfiLogo />
@@ -16,7 +16,7 @@ export default function Header() {
         </div>
         <IconsWrapper />
       </div>
-      <div className='border-y'>
+      <div className='border-y w-full mx-auto'>
         <HeaderNav />
       </div>
     </>

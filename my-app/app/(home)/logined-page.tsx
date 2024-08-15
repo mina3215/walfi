@@ -5,7 +5,7 @@ import CardWrapper from '@/ui/home/card-wrapper';
 
 export default function LoginedPage() {
   return (
-    <main className='bg-blue-100'>
+    <main className='bg-blue-100 w-full'>
       <div id='main-info' className='w-[1080px] mx-auto'>
         <div id='main-phrase'>
           <PharaseBox component={LoginedPhrase}/>
