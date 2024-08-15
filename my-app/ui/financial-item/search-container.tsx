@@ -1,4 +1,5 @@
 import SearchBar from '../searchbar';
+import { Blue500Button } from '../buttons';
 
 function CheckBox({type}:{type:string}) {
   return (
@@ -22,6 +23,7 @@ export default function SearchContainer() {
             </div>)
         }
         <SearchBar className='border-2 border-black py-[3px] w-[400px] h-11 bg-slate-50' placeholder='검색어를 입력하세요' />
+        <Blue500Button buttonLabel='검색' className='px-4 py-2'/>
       </div>
     </div>
   )

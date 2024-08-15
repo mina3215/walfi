@@ -12,11 +12,27 @@ export function LoginButton() {
   )
 }
 
-export function anotherbutton() {
+export function Blue500Button({ buttonLabel, className }: {
+  buttonLabel: string,
+  className : string
+}) {
+  const router = useRouter();
+
   return (
     <div>
-      <button>
+      <button id='button' className={`bg-blue-500 text-white ${className}`}>
+        {buttonLabel}
+      </button>
+    </div>
+  )
+}
 
+export function Gray400Button({ buttonLabel }: { buttonLabel: string }) {
+  const router = useRouter();
+  return (
+    <div>
+      <button className='bg-gray-400 text-white p-2'>
+        {buttonLabel}
       </button>
     </div>
   )
