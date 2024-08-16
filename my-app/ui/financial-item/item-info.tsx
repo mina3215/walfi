@@ -5,7 +5,7 @@ import Circle from '../shape'
 export default function ItemInfo({ item }: {item :ProductProps}) {
   const {name, baseRate, info, period} = item;
   return (
-    <div className='grid grid-cols-6 items-center h-32 border-b-2 border-black px-10'>
+    <div className='grid grid-cols-6 items-center border-y h-32 px-10'>
       <div className='col-span-1'>
         <Circle id='item-img'/>
       </div>
@@ -17,8 +17,8 @@ export default function ItemInfo({ item }: {item :ProductProps}) {
       </div>
       <div className='col-span-2 flex justify-center'>
         <div id='buttons' className='flex justify-between'>
-          <Blue500Button buttonLabel="가입하기" className='p-2 mr-2' />
-          <Gray400Button buttonLabel="상세보기" />
+          <Blue500Button buttonLabel="가입하기" className='p-2 mr-2' href={`financial-items/${name}`} />
+          <Gray400Button buttonLabel="상세보기" className='p-2 mr-2' href={`financial-items/${name}`} />
         </div>
       </div>
     </div>

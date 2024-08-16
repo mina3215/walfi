@@ -12,26 +12,32 @@ export function LoginButton() {
   )
 }
 
-export function Blue500Button({ buttonLabel, className }: {
+export function Blue500Button({ buttonLabel, href, className = '' }: {
   buttonLabel: string,
-  className : string
+  className: string,
+  href:string
 }) {
   const router = useRouter();
 
   return (
     <div>
-      <button id='button' className={`bg-blue-500 text-white ${className}`}>
+      <button id='button' className={`bg-blue-500 text-white ${className}`} onClick={()=>router.push(href)}>
         {buttonLabel}
       </button>
     </div>
   )
 }
 
-export function Gray400Button({ buttonLabel }: { buttonLabel: string }) {
+export function Gray400Button({ buttonLabel, href, className='' }:
+  {
+    buttonLabel: string,
+    href: string,
+    className : string
+  }) {
   const router = useRouter();
   return (
     <div>
-      <button className='bg-gray-400 text-white p-2'>
+      <button className={`bg-gray-400 text-white ${className}`} onClick={()=>router.push(href)}>
         {buttonLabel}
       </button>
     </div>

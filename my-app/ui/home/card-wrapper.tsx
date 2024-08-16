@@ -10,9 +10,9 @@ export default function CardWrapper() {
   return (
     <div id='recommand-card-wrapper' className='flex flex-row justify-between pb-10'>
       {list&&
-        list.map((product: ProductProps) => 
+        list.map((product: ProductProps) =>
           <div key={product.name}>
-            <Link href={'/'}>
+            <Link href={`/financial-items/${product.name}`}>
               <RecommandCard {...product} />
             </Link>
           </div>

@@ -14,7 +14,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <div>
           <SideNav title={title} links={links} />
         </div>
-        <div className='w-full'>
+        <div className='w-full pr-10'>
           {children}
         </div>
       </div>
