@@ -1,6 +1,6 @@
 import useAccount from '@/services/account/useAccountService';
-import AccountListInfo from './account-info';
 import Account from '@/types/account-props';
+import AccountListInfo from './account-info';
 
 // const data = [{
 //   type:'입출금통장',

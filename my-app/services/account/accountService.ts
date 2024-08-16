@@ -1,4 +1,4 @@
-import { requestGet, requestPost } from '@/utils/http-common'
+import { requestGet } from '@/utils/http-common'
 
 const queryKeys = {
   all: ['account'] as const,

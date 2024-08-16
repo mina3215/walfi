@@ -5,7 +5,7 @@ export default function RecommandCard({
   baseRate,
   addRate,
   period,
-  info
+  info,
 }: ProductProps) {
   const maxRate = (baseRate + addRate*10).toFixed(2);
   

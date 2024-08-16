@@ -6,5 +6,6 @@ export interface ProductProps {
   baseRate: number,
   addRate: number,
   period: number,
-  info: string
+  info: string,
+  idx: number
 }

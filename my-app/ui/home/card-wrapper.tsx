@@ -1,7 +1,7 @@
-import useProduct from '@/services/product/useProductService';
+import {useProduct} from '@/services/product/useProductService';
 import { ProductProps } from '@/types/product-props';
-import RecommandCard from '../card';
 import Link from 'next/link';
+import RecommandCard from '../card';
 
 
 export default function CardWrapper() {
@@ -12,7 +12,7 @@ export default function CardWrapper() {
       {list&&
         list.map((product: ProductProps) =>
           <div key={product.name}>
-            <Link href={`/financial-items/${product.name}`}>
+            <Link href={`/financial-items/${product.idx}`}>
               <RecommandCard {...product} />
             </Link>
           </div>

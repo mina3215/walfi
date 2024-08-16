@@ -1,9 +1,10 @@
 'use client';
+
 import { useRouter } from 'next/navigation';
 import { ChevronRightIcon } from '@heroicons/react/24/outline'
 import Account from '@/types/account-props';
 
-export default function AccountListInfo({ account }: Account) {
+export default function AccountListInfo({ account }: {account : Account}) {
   const { 계좌번호: number, 구분: type, 잔액원화: money } = account;
   const router = useRouter();
   return (

@@ -3,11 +3,11 @@ import { Blue500Button, Gray400Button } from '../buttons';
 import Circle from '../shape'
 
 export default function ItemInfo({ item }: {item :ProductProps}) {
-  const {name, baseRate, info, period} = item;
+  const {name, baseRate, info, period, idx} = item;
   return (
     <div className='grid grid-cols-6 items-center border-y h-32 px-10'>
-      <div className='col-span-1'>
-        <Circle id='item-img'/>
+      <div className='col-span-1' id='item-img'>
+        <Circle/>
       </div>
       <div className='col-span-3'>
         <div id='name-rate' className='flex font-semibold text-xl'>
@@ -17,8 +17,8 @@ export default function ItemInfo({ item }: {item :ProductProps}) {
       </div>
       <div className='col-span-2 flex justify-center'>
         <div id='buttons' className='flex justify-between'>
-          <Blue500Button buttonLabel="가입하기" className='p-2 mr-2' href={`financial-items/${name}`} />
-          <Gray400Button buttonLabel="상세보기" className='p-2 mr-2' href={`financial-items/${name}`} />
+          <Blue500Button buttonLabel="가입하기" className='p-2 mr-2' href={`financial-items/${idx}`} />
+          <Gray400Button buttonLabel="상세보기" className='p-2 mr-2' href={`financial-items/${idx}`} />
         </div>
       </div>
     </div>
